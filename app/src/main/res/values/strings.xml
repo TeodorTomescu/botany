@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">botany</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="flowerShape">
+        <item>Irregular</item>
+        <item>3 rays/petals</item>
+        <item>4 rays/petals</item>
+        <item>5 rays/petals</item>
+        <item>6 rays/petals</item>
+        <item>7 rays/petals</item>
+        <item>8 or more rays/petals</item>
+        <item>I do not know</item>
+    </string-array>
+
+    <string-array name="leafShape">
+        <item>Smooth</item>
+        <item>Toothed</item>
+        <item>Lobed</item>
+        <item>Divided</item>
+        <item>Mixed</item>
+        <item>None</item>
+        <item>I don not know</item>
+    </string-array>
+
+    <string-array name="clusterTypes">
+        <item>Individual flowers(no clusters)</item>
+        <item>Elongated clusters</item>
+        <item>Round/flat clusters</item>
+        <item>I don not know</item>
+    </string-array>
+
+    <string-array name="bloomTime">
+        <item>April - May</item>
+        <item>April - June</item>
+        <item>April - November</item>
+        <item>May - July</item>
+        <item>June - August</item>
+        <item>June - September</item>
+        <item>June - November</item>
+        <item>I do not know</item>
+    </string-array>
+
+    <string-array name="useCases">
+        <item>Medicine</item>
+        <item>Food</item>
+        <item>Symbolism</item>
+        <item>Perfumary</item>
+        <item>Floristry</item>
+        <item>I do not know</item>
+    </string-array>
+
+</resources>
