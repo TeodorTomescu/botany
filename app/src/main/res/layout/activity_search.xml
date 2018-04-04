@@ -383,8 +383,11 @@
 
         <Spinner
             android:id="@+id/useCaseSpinner"
-            android:layout_width="307dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bloomTimeSpinner"
             app:layout_constraintTop_toTopOf="@+id/textView13" />
 

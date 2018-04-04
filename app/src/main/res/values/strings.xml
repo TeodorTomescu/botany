@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="flowerShape">
+        <item>Select from dropdown</item>
         <item>Irregular</item>
         <item>3 rays/petals</item>
         <item>4 rays/petals</item>
@@ -14,23 +15,25 @@
     </string-array>
 
     <string-array name="leafShape">
+        <item>Select from dropdown</item>
         <item>Smooth</item>
         <item>Toothed</item>
         <item>Lobed</item>
-        <item>Divided</item>
+        <item>Thin rays</item>
         <item>Mixed</item>
-        <item>None</item>
-        <item>I don not know</item>
+        <item>I do not know</item>
     </string-array>
 
     <string-array name="clusterTypes">
+        <item>Select from dropdown</item>
         <item>Individual flowers(no clusters)</item>
         <item>Elongated clusters</item>
         <item>Round/flat clusters</item>
-        <item>I don not know</item>
+        <item>I do not know</item>
     </string-array>
 
     <string-array name="bloomTime">
+        <item>Select from dropdown</item>
         <item>April - May</item>
         <item>April - June</item>
         <item>April - November</item>
@@ -42,6 +45,7 @@
     </string-array>
 
     <string-array name="useCases">
+        <item>Select from dropdown</item>
         <item>Medicine</item>
         <item>Food</item>
         <item>Symbolism</item>
