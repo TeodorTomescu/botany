@@ -10,12 +10,13 @@ import android.widget.Spinner;
 
 public class Search extends AppCompatActivity {
 
-    public String flowerShapeResult;
+    String flowerShapeResult;
     String clusterTypeResult;
     String leafShapeResult;
+    String colorResult;
     String bloomTimeResult;
-    String useCaseRsult;
-    String sizeResult;
+    String useCaseResult;
+    Double sizeResult;
     String locationResult;
 
 
@@ -24,7 +25,6 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
 
         Spinner clusterTypeSpinner = (Spinner) findViewById(R.id.clusterTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -67,6 +67,14 @@ public class Search extends AppCompatActivity {
         adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         useCaseSpinner.setAdapter(adapter5);
+
+        Spinner colorSpinner = (Spinner) findViewById(R.id.colorSpinner);
+        ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
+                R.array.color, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        colorSpinner.setAdapter(adapter6);
 
         flowerShapeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -173,17 +181,17 @@ public class Search extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 if (i == 1) {
-                    bloomTimeResult = "medicinal";
+                    useCaseResult = "medicinal";
                 } else if (i == 2) {
-                    bloomTimeResult = "edible";
+                    useCaseResult = "edible";
                 } else if (i == 3) {
-                    bloomTimeResult = "symbolism";
+                    useCaseResult = "symbolism";
                 } else if (i == 4) {
-                    bloomTimeResult = "perfume";
+                    useCaseResult = "perfume";
                 } else if (i == 5) {
-                    bloomTimeResult = "floristry";
+                    useCaseResult = "floristry";
                 } else if (i == 6) {
-                    bloomTimeResult = "dontKnow";
+                    useCaseResult = "dontKnow";
                 }
             }
 
@@ -192,6 +200,34 @@ public class Search extends AppCompatActivity {
 
             }
         });
+
+        colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                if (i == 1) {
+                    colorResult = "blue";
+                } else if (i == 2) {
+                    colorResult = "brown";
+                } else if (i == 3) {
+                    colorResult = "orange";
+                } else if (i == 4) {
+                    colorResult = "pink";
+                } else if (i == 5) {
+                    colorResult = "purple";
+                } else if (i == 6) {
+                    colorResult = "red";
+                } else if (i == 7) {
+                    colorResult = "white";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
 
