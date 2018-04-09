@@ -1,11 +1,14 @@
 package ca.mcmaster.tomescut.botany;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class Search extends AppCompatActivity {
@@ -75,6 +78,28 @@ public class Search extends AppCompatActivity {
         adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         colorSpinner.setAdapter(adapter6);
+
+        Spinner locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+        ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
+                R.array.location, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        colorSpinner.setAdapter(adapter7);
+
+
+        EditText sizeInput = (EditText) findViewById(R.id.sizeEditText);
+        String size = sizeInput.getText().toString();
+        sizeResult = Double.parseDouble(size);
+
+       // Button searchButton = (Button) findViewById(R.id.searchButton);
+       // searchButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+           // public void onClick(View view) {
+              //  Intent intent = new Intent(getApplicationContext(), Results.class);
+               // startActivity(intent);
+           // }
+        //});
 
         flowerShapeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -226,6 +251,36 @@ public class Search extends AppCompatActivity {
 
             }
         });
+
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                if (i == 1) {
+                    locationResult = "na";
+                } else if (i == 2) {
+                    locationResult = "europe";
+                } else if (i == 3) {
+                    locationResult = "medi";
+                } else if (i == 4) {
+                    locationResult = "oceania";
+                } else if (i == 5) {
+                    locationResult = "asia";
+                } else if (i == 6) {
+                    locationResult = "africa";
+                } else if (i == 7) {
+                    locationResult = "dontKnow";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
 
 
     }
