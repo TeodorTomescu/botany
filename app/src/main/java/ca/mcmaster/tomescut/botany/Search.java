@@ -25,7 +25,6 @@ public class Search extends AppCompatActivity {
     String forumChoice = "I don't Know";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,59 +34,45 @@ public class Search extends AppCompatActivity {
         Spinner clusterTypeSpinner = findViewById(R.id.clusterTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.clusterTypes, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         clusterTypeSpinner.setAdapter(adapter);
 
 
         Spinner flowerShapeSpinner = findViewById(R.id.flowerShapeSpinner);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.flowerShape, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         flowerShapeSpinner.setAdapter(adapter2);
 
 
         Spinner leafShapeSpinner = findViewById(R.id.leafShapeSpinner);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
                 R.array.leafShape, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         leafShapeSpinner.setAdapter(adapter3);
 
         Spinner bloomTimeSpinner = findViewById(R.id.bloomTimeSpinner);
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
                 R.array.bloomTime, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         bloomTimeSpinner.setAdapter(adapter4);
 
         Spinner useCaseSpinner = findViewById(R.id.useCaseSpinner);
         ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
                 R.array.useCases, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         useCaseSpinner.setAdapter(adapter5);
 
         Spinner colorSpinner = findViewById(R.id.colorSpinner);
         ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
                 R.array.color, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         colorSpinner.setAdapter(adapter6);
 
         Spinner locationSpinner = findViewById(R.id.locationSpinner);
         ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         locationSpinner.setAdapter(adapter7);
 
         Spinner sizeSpinner = findViewById(R.id.sizeSpinner);
@@ -124,7 +109,6 @@ public class Search extends AppCompatActivity {
 
             }
         });
-
 
         clusterTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -302,112 +286,16 @@ public class Search extends AppCompatActivity {
 
     public void sendResult(View view) {
         Intent intent = new Intent(this, Results.class);
-        forumChoice = "I don't Know";
         calculate();
         intent.putExtra(EXTRA_MESSAGE, forumChoice);
         startActivity(intent);
     }
 
     public void calculate(){
-        physResult = "dontKnow";
-        useResult = "dontKnow";
-        geoResult = "dontKnow";
-        //======= Get Phys Result =============
-        if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("yellow") || leafShapeResult.equals("lobed")) || (colorResult.equals("yellow") && leafShapeResult.equals("lobed"))) {
-            physResult = "Asteraceae";
+        calcPhys();
+        calcGeo();
+        calcUse();
 
-        }
-        if (leafShapeResult.equals("thinRays")) {
-            physResult = "ButtonBush";
-        }
-        if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("purple") || leafShapeResult.equals("toothed"))
-                || (colorResult.equals("purple") && leafShapeResult.equals("toothed"))) {
-            physResult = "Carnation";
-        }
-        if (flowerShapeResult.equals("eightOrMore") && (clusterTypeResult.equals("individual") || colorResult.equals("white")
-                || sizeResult.equals("0.1to0.5") || leafShapeResult.equals("smooth"))) {
-            physResult = "Daisy";
-        }
-        if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("six") || sizeResult.equals("0.5to2"))) {
-            physResult = "Hyacinth";
-        }
-        if (flowerShapeResult.equals("five")) {
-            physResult = "Lily";
-        }
-        if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("three") || sizeResult.equals("2to4"))) {
-            physResult = "Orchid";
-        }
-        if (leafShapeResult.equals("smooth") && (flowerShapeResult.equals("six") || (colorResult.equals("red") || colorResult.equals("white")))
-                || sizeResult.equals("0.1to0.5")) {
-            physResult = "Rose";
-        }
-        if (clusterTypeResult.equals("individual") && flowerShapeResult.equals("three")) {
-            physResult = "Trillium";
-        }
-        if (clusterTypeResult.equals("individual") && leafShapeResult.equals("toothed")) {
-            physResult = "Tulip";
-        }
-
-        if (colorResult.equals("yellow") && flowerShapeResult.equals("irregular")) {
-            physResult = "Yellow Iris";
-        }
-        //======= Get Geo Result =============
-        if (bloomTimeResult.equals("juneToSept")){
-            geoResult = "Button Bush";
-        }
-
-        if (bloomTimeResult.equals("mayToJuly")){
-            geoResult = "Yellow Iris";
-        }
-
-        if (bloomTimeResult.equals("aprToMay")){
-            geoResult = "Hyacinth";
-        }
-
-        if (bloomTimeResult.equals("juneToAug") || locationResult.equals("Oceania")){
-            geoResult = "Orchid";
-        }
-
-        if (bloomTimeResult.equals("aprToNov")){
-            geoResult = "Daisy";
-        }
-
-        if (bloomTimeResult.equals("juneToNov")){
-            geoResult = "Lily";
-        }
-
-        if (locationResult.equals("worldwide")){
-            geoResult = "Asteraceae";
-        }
-
-        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("asia")){
-            geoResult = "Rose";
-        }
-
-        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("medi")){
-            geoResult = "Carnation";
-        }
-
-        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("europe")) {
-            geoResult = "Tulip";
-        }
-
-        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("na")) {
-            geoResult = "Trillium";
-        }
-        //======= Get Use Result =============
-        if (useResult.equals("edible")){
-            useResult = "Daisy";
-        }
-
-        if (useResult.equals("perfume")){
-            useResult = "Orchid";
-        }
-
-        if (useResult.equals("floristry")){
-            useResult = "Lily";
-        }
-        //======= Choose between the three =============
         if (!physResult.equals("dontKnow") && useResult.equals(geoResult) && geoResult.equals(physResult)){
             forumChoice= physResult;
         }
@@ -435,7 +323,127 @@ public class Search extends AppCompatActivity {
         else if (!useResult.equals("dontKnow")){
             forumChoice = useResult;
         }
+        else {
+            forumChoice = "I dont Know";
+        }
     }
+
+    public void calcPhys(){
+        if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("yellow") || leafShapeResult.equals("lobed")) || (colorResult.equals("yellow") && leafShapeResult.equals("lobed"))) {
+            physResult = "Asteraceae";
+
+        }
+        else if (leafShapeResult.equals("thinRays")) {
+            physResult = "ButtonBush";
+        }
+        else if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("purple") || leafShapeResult.equals("toothed"))
+                || (colorResult.equals("purple") && leafShapeResult.equals("toothed"))) {
+            physResult = "Carnation";
+        }
+        else if (flowerShapeResult.equals("eightOrMore") && (clusterTypeResult.equals("individual") || colorResult.equals("white")
+                || sizeResult.equals("0.1to0.5") || leafShapeResult.equals("smooth"))) {
+            physResult = "Daisy";
+        }
+        else if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("six") || sizeResult.equals("0.5to2"))) {
+            physResult = "Hyacinth";
+        }
+        else if (flowerShapeResult.equals("five")) {
+            physResult = "Lily";
+        }
+        else if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("three") || sizeResult.equals("2to4"))) {
+            physResult = "Orchid";
+        }
+        else if (leafShapeResult.equals("smooth") && (flowerShapeResult.equals("six") || (colorResult.equals("red") || colorResult.equals("white")))
+                || sizeResult.equals("0.1to0.5")) {
+            physResult = "Rose";
+        }
+        else if (clusterTypeResult.equals("individual") && flowerShapeResult.equals("three")) {
+            physResult = "Trillium";
+        }
+        else if (clusterTypeResult.equals("individual") && leafShapeResult.equals("toothed")) {
+            physResult = "Tulip";
+        }
+
+        else if (colorResult.equals("yellow") && flowerShapeResult.equals("irregular")) {
+            physResult = "Yellow Iris";
+        }
+
+        else {
+            physResult = "dontKnow";
+        }
+    }
+
+    public void calcGeo(){
+        if (bloomTimeResult.equals("juneToSept")){
+            geoResult = "Button Bush";
+        }
+
+        else if (bloomTimeResult.equals("mayToJuly")){
+            geoResult = "Yellow Iris";
+        }
+
+        else if (bloomTimeResult.equals("aprToMay")){
+            geoResult = "Hyacinth";
+        }
+
+        else if (bloomTimeResult.equals("juneToAug") || locationResult.equals("Oceania")){
+            geoResult = "Orchid";
+        }
+
+        else if (bloomTimeResult.equals("aprToNov")){
+            geoResult = "Daisy";
+        }
+
+        else if (bloomTimeResult.equals("juneToNov")){
+            geoResult = "Lily";
+        }
+
+        else if (locationResult.equals("worldwide")){
+            geoResult = "Asteraceae";
+        }
+
+        else if (bloomTimeResult.equals("aprToJune") && locationResult.equals("asia")){
+            geoResult = "Rose";
+        }
+
+        else if (bloomTimeResult.equals("aprToJune") && locationResult.equals("medi")){
+            geoResult = "Carnation";
+        }
+
+        else if (bloomTimeResult.equals("aprToJune") && locationResult.equals("europe")) {
+            geoResult = "Tulip";
+        }
+
+        else if (bloomTimeResult.equals("aprToJune") && locationResult.equals("na")) {
+            geoResult = "Trillium";
+        }
+        else {
+            geoResult = "dontKnow";
+        }
+    }
+
+    public void calcUse(){
+        if (useResult.equals("edible")){
+            useResult = "Daisy";
+        }
+
+        else if (useResult.equals("perfume")){
+            useResult = "Orchid";
+        }
+
+        else if (useResult.equals("floristry")){
+            useResult = "Lily";
+        }
+
+        else {
+            useResult = "dontKnow";
+        }
+    }
+
+
+
+
+
 
 
 }

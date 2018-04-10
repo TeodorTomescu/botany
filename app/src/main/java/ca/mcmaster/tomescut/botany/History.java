@@ -10,15 +10,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class History extends AppCompatActivity {
-    SharedPreferences HistorySearches;
-    SharedPreferences.Editor editor;
-    int index = 0; // for the test
-    List<String> history = new ArrayList<String>();
+
+    //List<String> history = new ArrayList<String>();
+    String history;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,15 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         Intent intent = getIntent();
-        history = (ArrayList<String>) intent.getSerializableExtra("history");
+       //history = (ArrayList<String>) intent.getSerializableExtra("history");
+        history = intent.getStringExtra("history");
 
-        ListView historyListView = findViewById(R.id.history);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, history);
-        historyListView.setAdapter(adapter);
+        TextView resultDisplayText = findViewById(R.id.historyDisplay);
+        resultDisplayText.setText(history);
+
+        //ListView historyListView = findViewById(R.id.history);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, history);
+        //historyListView.setAdapter(adapter);
 
 
     }

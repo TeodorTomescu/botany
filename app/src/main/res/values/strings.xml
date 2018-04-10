@@ -30,7 +30,6 @@
 
     <string-array name="leafShape">
         <item>Select</item>
-        <item>Select</item>
         <item>Smooth</item>
         <item>Toothed</item>
         <item>Lobed</item>
