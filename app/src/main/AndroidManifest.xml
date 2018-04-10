@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Search" />
+        <activity android:name=".Search"/>
         <activity android:name=".History" />
-        <activity android:name=".Results"></activity>
+        <activity android:name=".Results"/>
+
     </application>
 
 </manifest>

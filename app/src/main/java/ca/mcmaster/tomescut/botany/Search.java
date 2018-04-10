@@ -7,20 +7,23 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 public class Search extends AppCompatActivity {
-
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     String flowerShapeResult;
     String clusterTypeResult;
     String leafShapeResult;
     String colorResult;
     String bloomTimeResult;
     String useCaseResult;
-    Double sizeResult;
     String locationResult;
+    String sizeResult;
+    String physResult = "dontKnow";
+    String useResult = "dontKnow";
+    String geoResult = "dontKnow";
+    String forumChoice = "I don't Know";
+
 
 
     @Override
@@ -29,7 +32,7 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        Spinner clusterTypeSpinner = (Spinner) findViewById(R.id.clusterTypeSpinner);
+        Spinner clusterTypeSpinner = findViewById(R.id.clusterTypeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.clusterTypes, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -38,7 +41,7 @@ public class Search extends AppCompatActivity {
         clusterTypeSpinner.setAdapter(adapter);
 
 
-        Spinner flowerShapeSpinner = (Spinner) findViewById(R.id.flowerShapeSpinner);
+        Spinner flowerShapeSpinner = findViewById(R.id.flowerShapeSpinner);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.flowerShape, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -47,7 +50,7 @@ public class Search extends AppCompatActivity {
         flowerShapeSpinner.setAdapter(adapter2);
 
 
-        Spinner leafShapeSpinner = (Spinner) findViewById(R.id.leafShapeSpinner);
+        Spinner leafShapeSpinner = findViewById(R.id.leafShapeSpinner);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
                 R.array.leafShape, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -55,7 +58,7 @@ public class Search extends AppCompatActivity {
 // Apply the adapter to the spinner
         leafShapeSpinner.setAdapter(adapter3);
 
-        Spinner bloomTimeSpinner = (Spinner) findViewById(R.id.bloomTimeSpinner);
+        Spinner bloomTimeSpinner = findViewById(R.id.bloomTimeSpinner);
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
                 R.array.bloomTime, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -63,7 +66,7 @@ public class Search extends AppCompatActivity {
 // Apply the adapter to the spinner
         bloomTimeSpinner.setAdapter(adapter4);
 
-        Spinner useCaseSpinner = (Spinner) findViewById(R.id.useCaseSpinner);
+        Spinner useCaseSpinner = findViewById(R.id.useCaseSpinner);
         ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
                 R.array.useCases, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -71,7 +74,7 @@ public class Search extends AppCompatActivity {
 // Apply the adapter to the spinner
         useCaseSpinner.setAdapter(adapter5);
 
-        Spinner colorSpinner = (Spinner) findViewById(R.id.colorSpinner);
+        Spinner colorSpinner = findViewById(R.id.colorSpinner);
         ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
                 R.array.color, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -79,27 +82,20 @@ public class Search extends AppCompatActivity {
 // Apply the adapter to the spinner
         colorSpinner.setAdapter(adapter6);
 
-        Spinner locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+        Spinner locationSpinner = findViewById(R.id.locationSpinner);
         ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
                 R.array.location, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
-        colorSpinner.setAdapter(adapter7);
+        locationSpinner.setAdapter(adapter7);
 
+        Spinner sizeSpinner = findViewById(R.id.sizeSpinner);
+        ArrayAdapter<CharSequence> adapter8 = ArrayAdapter.createFromResource(this,
+                R.array.sizes, android.R.layout.simple_spinner_item);
+        adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sizeSpinner.setAdapter(adapter8);
 
-        EditText sizeInput = (EditText) findViewById(R.id.sizeEditText);
-        String size = sizeInput.getText().toString();
-        sizeResult = Double.parseDouble(size);
-
-       // Button searchButton = (Button) findViewById(R.id.searchButton);
-       // searchButton.setOnClickListener(new View.OnClickListener() {
-            //@Override
-           // public void onClick(View view) {
-              //  Intent intent = new Intent(getApplicationContext(), Results.class);
-               // startActivity(intent);
-           // }
-        //});
 
         flowerShapeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -268,6 +264,8 @@ public class Search extends AppCompatActivity {
                 } else if (i == 6) {
                     locationResult = "africa";
                 } else if (i == 7) {
+                    locationResult = "worldwide";
+                } else if (i == 8) {
                     locationResult = "dontKnow";
                 }
             }
@@ -278,11 +276,165 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        sizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                if (i == 1) {
+                    sizeResult = "0.1to0.5";
+                } else if (i == 2) {
+                    sizeResult = "0.5to2";
+                } else if (i == 3) {
+                    sizeResult = "2to4";
+                } else if (i == 4) {
+                    sizeResult = "dontKnow";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
+        }
 
 
+    public void sendResult(View view) {
+        Intent intent = new Intent(this, Results.class);
+        forumChoice = "I don't Know";
+        calculate();
+        intent.putExtra(EXTRA_MESSAGE, forumChoice);
+        startActivity(intent);
+    }
 
+    public void calculate(){
+        physResult = "dontKnow";
+        useResult = "dontKnow";
+        geoResult = "dontKnow";
+        //======= Get Phys Result =============
+        if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("yellow") || leafShapeResult.equals("lobed")) || (colorResult.equals("yellow") && leafShapeResult.equals("lobed"))) {
+            physResult = "Asteraceae";
+
+        }
+        if (leafShapeResult.equals("thinRays")) {
+            physResult = "ButtonBush";
+        }
+        if (clusterTypeResult.equals("flatOrRound") && (colorResult.equals("purple") || leafShapeResult.equals("toothed"))
+                || (colorResult.equals("purple") && leafShapeResult.equals("toothed"))) {
+            physResult = "Carnation";
+        }
+        if (flowerShapeResult.equals("eightOrMore") && (clusterTypeResult.equals("individual") || colorResult.equals("white")
+                || sizeResult.equals("0.1to0.5") || leafShapeResult.equals("smooth"))) {
+            physResult = "Daisy";
+        }
+        if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("six") || sizeResult.equals("0.5to2"))) {
+            physResult = "Hyacinth";
+        }
+        if (flowerShapeResult.equals("five")) {
+            physResult = "Lily";
+        }
+        if (clusterTypeResult.equals("elongate") && (flowerShapeResult.equals("three") || sizeResult.equals("2to4"))) {
+            physResult = "Orchid";
+        }
+        if (leafShapeResult.equals("smooth") && (flowerShapeResult.equals("six") || (colorResult.equals("red") || colorResult.equals("white")))
+                || sizeResult.equals("0.1to0.5")) {
+            physResult = "Rose";
+        }
+        if (clusterTypeResult.equals("individual") && flowerShapeResult.equals("three")) {
+            physResult = "Trillium";
+        }
+        if (clusterTypeResult.equals("individual") && leafShapeResult.equals("toothed")) {
+            physResult = "Tulip";
+        }
+
+        if (colorResult.equals("yellow") && flowerShapeResult.equals("irregular")) {
+            physResult = "Yellow Iris";
+        }
+        //======= Get Geo Result =============
+        if (bloomTimeResult.equals("juneToSept")){
+            geoResult = "Button Bush";
+        }
+
+        if (bloomTimeResult.equals("mayToJuly")){
+            geoResult = "Yellow Iris";
+        }
+
+        if (bloomTimeResult.equals("aprToMay")){
+            geoResult = "Hyacinth";
+        }
+
+        if (bloomTimeResult.equals("juneToAug") || locationResult.equals("Oceania")){
+            geoResult = "Orchid";
+        }
+
+        if (bloomTimeResult.equals("aprToNov")){
+            geoResult = "Daisy";
+        }
+
+        if (bloomTimeResult.equals("juneToNov")){
+            geoResult = "Lily";
+        }
+
+        if (locationResult.equals("worldwide")){
+            geoResult = "Asteraceae";
+        }
+
+        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("asia")){
+            geoResult = "Rose";
+        }
+
+        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("medi")){
+            geoResult = "Carnation";
+        }
+
+        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("europe")) {
+            geoResult = "Tulip";
+        }
+
+        if (bloomTimeResult.equals("aprToJune") && locationResult.equals("na")) {
+            geoResult = "Trillium";
+        }
+        //======= Get Use Result =============
+        if (useResult.equals("edible")){
+            useResult = "Daisy";
+        }
+
+        if (useResult.equals("perfume")){
+            useResult = "Orchid";
+        }
+
+        if (useResult.equals("floristry")){
+            useResult = "Lily";
+        }
+        //======= Choose between the three =============
+        if (!physResult.equals("dontKnow") && useResult.equals(geoResult) && geoResult.equals(physResult)){
+            forumChoice= physResult;
+        }
+
+        else if (!physResult.equals("dontKnow") && physResult.equals(geoResult)){
+            forumChoice = physResult;
+        }
+
+        else if (!physResult.equals("dontKnow") && physResult.equals(useResult)){
+            forumChoice = physResult;
+        }
+
+        else if (!geoResult.equals("dontKnow") && useResult.equals(geoResult)){
+            forumChoice = geoResult;
+        }
+
+        else if (!physResult.equals("dontKnow")){
+            forumChoice = physResult;
+        }
+
+        else if (!geoResult.equals("dontKnow")){
+            forumChoice = geoResult;
+        }
+
+        else if (!useResult.equals("dontKnow")){
+            forumChoice = useResult;
+        }
     }
 
 

@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">BOTany</string>
     <string name="action_settings">Settings</string>
+    <string name="color">Colour</string>
+    <string name="phys">Physical Attributes</string>
+    <string name="fShape">Flower Shape</string>
+    <string name="lShape">Leaf Shape</string>
+    <string name="clust">Cluster Type</string>
+    <string name="bloom">Bloom Time</string>
+    <string name="location">Location</string>
+    <string name="geo">Geographic Attributes</string>
+    <string name="hint">Enter size in feet</string>
+    <string name="size">Size</string>
+    <string name="use">Use cases</string>
+    <string name="used">Flower is used in</string>
+    <string name="searcbButton">Search</string>
+
 
     <string-array name="flowerShape">
         <item>Select</item>
@@ -71,10 +85,19 @@
         <item>Select</item>
         <item>North America</item>
         <item>Europe</item>
-        <item>Metiterranean</item>
+        <item>Mediterranean</item>
         <item>Oceania</item>
         <item>Asia</item>
         <item>Africa</item>
+        <item>Worldwide</item>
+        <item>I do not know</item>
+    </string-array>
+
+    <string-array name="sizes">
+        <item>Select</item>
+        <item>0.1 to 0.5 feet</item>
+        <item>0.5 to 2 feet</item>
+        <item>2 to 4 feet</item>
         <item>I do not know</item>
     </string-array>
 
